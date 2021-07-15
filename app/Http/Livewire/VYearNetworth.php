@@ -22,7 +22,7 @@ class VYearNetworth extends Component
     public $cash;
     public $investPersonal;
     public $longTermInvest;
-    public $show = 1;
+    public $show = 3;
     public $date;
 
     protected $rules = [
@@ -83,11 +83,8 @@ class VYearNetworth extends Component
                     else
                         break;
 
-
                 }
-
             }
-
         }
     }
 
@@ -96,23 +93,19 @@ class VYearNetworth extends Component
         $this->InitializeTable();
 
         $start_date = HomeLoan::select('pay_date')->first();
+
         if(!is_null($start_date))
         {
             if($this->show < 1)
                 $end_date = date('Y-m-d', strtotime($start_date->pay_date . " + " . 6 . "  months"));
             else if($this->show >= 1 )
                 $end_date = date('Y-m-d', strtotime($start_date->pay_date . " + " . $this->show . "  years"));
-            else if ($this->show = "x")
-                $end_date = date('Y-m-d', strtotime($start_date->pay_date . " + " . $this->show . "  years"));
-
-
-
-
+            else if ($this->show == 1000)
+                $end_date = date('Y-m-d', strtotime($start_date->pay_date . " + " . 1000 . "  years"));
         }   
-            
         else
             $end_date = null;
-
+            
         $from = date($start_date ? $start_date->pay_date : null);
         $to = date($end_date ? $end_date : null);
 
@@ -133,6 +126,7 @@ class VYearNetworth extends Component
             array_push($investSupers, ProgramSuper::where('date', $date->date)->first());
         }
 
+
         return view('livewire.v-year-networth', [
             "home_loans" => $home_loans ,
             "programVYear" => $programVYear ? $programVYear : null,
@@ -141,6 +135,8 @@ class VYearNetworth extends Component
             "investSupers" => $investSupers ? $investSupers : null, 
             "monthlyNetworths" => $monthlyNetworths ? $monthlyNetworths : null
         ]);
+
+
     }
 
 

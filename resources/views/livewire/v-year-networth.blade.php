@@ -86,10 +86,11 @@
 
     <div class="card">
         <div class="card-header">
-            Program Super Table
+    <span class="float-left" stlye="padding-top: 100px; margin-top: 100px;margin-bottom: -100px; padding-bottom: -100px;"> Program Super Table</span>
             <span class="float-right">
-                <div class="form-group row">
-                    <select wire:model="show"  class="form-control" id="ccyear">
+                <div class="form-group d-flex justify-content-between">
+                    <span style="margin: 5px 10px ;  ">Show</span>
+                    <select wire:model="show" class="form-control" id="ccyear">
                         <option value="0.5">6 Months</option>
                         <option value="1">1 Year</option>
                         <option value="3">3 Years</option>
@@ -223,8 +224,8 @@
                                 else 
                                     echo '<td> No data</td>';
 
-                                if(isset($monthlyNetworths[$key]->cash))
-                                    echo '<td> ' . $monthlyNetworths[$key]->cash . '  </td>';
+                                if(isset($programVYear[$key]->cash))
+                                    echo '<td> ' . $programVYear[$key]->cash . '  </td>';
                                 else
                                     echo '<td> No data</td>';
 

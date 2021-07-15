@@ -39,7 +39,14 @@
                                    </div>
                               </div>
                               <div class="row">
-                                   <div class="col-6">
+                                   <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                             <label>Home loan</label>
+                                             <input wire:model.defer="home_loan_mod" class="form-control" placeholder="Enter home loan">
+                                             @error('home_loan_mod') <span class="span-error">{{ $message }}</span>@enderror
+                                        </div>
+                                   </div>
+                                   <div class="col-sm-12 col-md-6">
                                         <div class="form-group">
                                              <label>Date Input</label>
                                              <input wire:model.defer="date_mod" class="form-control" id="date-input" type="date" name="date-input" placeholder="date">

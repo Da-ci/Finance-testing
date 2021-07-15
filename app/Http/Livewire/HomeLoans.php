@@ -20,7 +20,7 @@ class HomeLoans extends Component
     public $ext_pay;
     public $change;
 
-    protected $listeners = ['tablesTruncated' => 'render'];
+    protected $listeners = ['tablesTruncated' => 'render'];    
 
     protected $rules = [
         'loan' => 'required|numeric|min:0|not_in:0',
@@ -47,9 +47,10 @@ class HomeLoans extends Component
         'ext_pay' => 'extra payments',
     ];
 
+    
     public function render()
     {
-        $datas = HomeLoan::orderBy('pay_date', 'ASC')->get();
+        $datas = HomeLoan::orderBy('id', 'ASC')->get();
         $cum_interest = HomeLoan::select('cum_interest')->orderBy('id', 'DESC')->first();
         $additional_data = HomeLoan::select('sch_payment')->first();
         $sch_no_pay = HomeLoan::select('pmt_no')->orderBy('id', 'DESC')->first();
@@ -95,9 +96,7 @@ class HomeLoans extends Component
 
     public function FormatVariable()
     {
-        // throw ValidationException::withMessages(['date' => 'This value is incorrect']);
         $this->validate();
-        // $data['date'] = date('d-m-Y', strtotime($this->date)); // convert to d-m-Y format;
         $data['date'] = $this->date;
         $data['interest_rate'] =  $this->int_rate / 100;
         $data['nb_payments'] = $this->nb_pay; //months
@@ -195,11 +194,6 @@ class HomeLoans extends Component
                             "cum_interest" => $data['cum_interest'],
                         ]);
 
-                        MonthlyNetworth::create([
-                            "user_id" => Auth::user()->id,
-                            "date" => $date
-                        ]);
-
                         $stop = 0;
                     } else {
                         $stop = 1;
@@ -227,11 +221,7 @@ class HomeLoans extends Component
                     "end_balance" => $data['end_balance'],
                     "cum_interest" => $data['interest'],
                 ]);
-
-                MonthlyNetworth::create([
-                    "user_id" => Auth::user()->id,
-                    "date" => $data['date']
-                ]);
+                
             }
         } while ($stop == 0);
 

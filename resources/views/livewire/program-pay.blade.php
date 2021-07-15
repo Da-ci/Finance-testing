@@ -1,81 +1,73 @@
-<div>
-    <div class="card">
-        <div class="card-header"><strong>Credit Card</strong> <small>Form</small></div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-4">
-                    <div class="form-group">
-                        <label for="ccnumber">Gross Pay</label>
-                        <input class="form-control" id="ccnumber" type="text" placeholder="0000 0000 0000 0000">
-                    </div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4 class="card-title mb-0">Home Loan Chart</h4>
+                <div class="small text-muted">15/07/2021</div>
+            </div>
+            <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
+                <div class="btn-group btn-group-toggle mx-3" data-toggle="buttons">
+                    <label class="btn btn-outline-secondary">
+                        <input id="option1" type="radio" name="options" autocomplete="off"> Day
+                    </label>
+                    <label class="btn btn-outline-secondary active">
+                        <input id="option2" type="radio" name="options" autocomplete="off" checked=""> Month
+                    </label>
+                    <label class="btn btn-outline-secondary">
+                        <input id="option3" type="radio" name="options" autocomplete="off"> Year
+                    </label>
                 </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-6 col-xl-4">
-                    <div class="form-group">
-                        <label for="ccnumber">Allowance</label>
-                        <input class="form-control" id="ccnumber" type="text" placeholder="0000 0000 0000 0000">
-                    </div>
+                
+            </div>
+        </div>
+        <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
                 </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-4">
-                    <div class="form-group">
-                        <label for="ccnumber">Super</label>
-                        <input class="form-control" id="ccnumber" type="text" placeholder="0000 0000 0000 0000">
-                    </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
+            <canvas class="chart chartjs-render-monitor" id="main-chart" height="375" width="588" style="display: block; height: 300px; width: 471px;"></canvas>
+            <div id="main-chart-tooltip" class="c-chartjs-tooltip center" style="opacity: 0; left: 376.142px; top: 280.441px;">
+                <div class="c-tooltip-header">
+                    <div class="c-tooltip-header-item">T</div>
+                </div>
+                <div class="c-tooltip-body">
+                    <div class="c-tooltip-body-item"><span class="c-tooltip-body-item-color" style="background-color: rgba(3, 9, 15, 0.1);"></span><span class="c-tooltip-body-item-label">My First dataset</span><span class="c-tooltip-body-item-value">172</span></div>
+                    <div class="c-tooltip-body-item"><span class="c-tooltip-body-item-color" style="background-color: transparent;"></span><span class="c-tooltip-body-item-label">My Second dataset</span><span class="c-tooltip-body-item-value">87</span></div>
+                    <div class="c-tooltip-body-item"><span class="c-tooltip-body-item-color" style="background-color: transparent;"></span><span class="c-tooltip-body-item-label">My Third dataset</span><span class="c-tooltip-body-item-value">65</span></div>
                 </div>
             </div>
         </div>
-
-        <div class="card-footer">
-            <button class="btn btn-sm btn-primary" type="submit"> Submit</button>
-            <button class="btn btn-sm btn-danger" type="reset"> Reset</button>
-        </div>
     </div>
-    <div class="card">
-        <div class="card-header"><i class="fa fa-align-justify"></i> Simple Table</div>
-        <div class="card-body">
-            <table class="table table-responsive-sm">
-                <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Gross Pay</th>
-                        <th>Allowances, Example Phone</th>
-                        <th>Hourly Pay (Based on calc)</th>
-                        <th>Extra Hours Worked</th>
-                        <th>Total Extra Worked Year based on F</th>
-                        <th>Total Gross</th>
-                        <th>Net (After Tax)</th>
-                        <th>Net + Extra Work (After Tax)</th>
-                        <th>Diff - Current Pay & Past Pay</th>
-                        <th>Diff extra work after tax</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for($i=0; $i<50; $i++) <tr>
-                        <td>1-15-2021</td>
-                        <td>$200.00</td>
-                        <td>$75.00</td>
-                        <td>$0.10</td>
-                        <td>32.00</td>
-                        <td>384.00</td>
-                        <td>$318.87</td>
-                        <td>$160.00</td>
-                        <td>$166.00</td>
-                        <td>2.00</td>
-                        <td>$6.00</td>
-                        <td></td>
-                        </tr>
-                        @endfor
-                </tbody>
-            </table>
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
+    <div class="card-footer">
+        <div class="row text-center">
+            <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                <div class="text-muted">Loan Amount</div><strong>250,000</strong>
+                <div class="progress progress-xs mt-2">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                <div class="text-muted">Annual Interest Rate</div><strong>20%</strong>
+                <div class="progress progress-xs mt-2">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                <div class="text-muted">Loan Periods</div><strong>360 Months (payments)</strong>
+                <div class="progress progress-xs mt-2">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md mb-sm-2 mb-0">
+                <div class="text-muted">Extra Payments</div><strong>1200 $</strong>
+                <div class="progress progress-xs mt-2">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
